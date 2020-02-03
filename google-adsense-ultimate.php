@@ -74,13 +74,12 @@ class GoogleAdsenseUltimate {
         	// add_menu_page( $page_title, $menu_title, $capability, $menu_slug, $function = '', $icon_url = '', $position = null )
             add_menu_page(
 	            __( 'Google Adsense Ultimate', 'google-adsense-ultimate' ),
-	            __( 'Google Adsense Ultimate', 'google-adsense-ultimate' ),
+	            __( 'Google Adsense', 'google-adsense-ultimate' ),
 	            'manage_options',
 	            'google-adsense-ultimate-settings',
-	            null,
+	            array( $this, 'settings_page' ),
 	            plugin_dir_url( __FILE__ ) . 'assets/images/adsense-logo.png',
-	            10,
-	            array( $this, 'settings_page' )
+	            10
 	        );
         }
     }
