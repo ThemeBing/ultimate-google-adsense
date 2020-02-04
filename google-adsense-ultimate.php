@@ -35,7 +35,6 @@ class GoogleAdsenseUltimate {
 	// Initialized
 	function __construct() {
 		add_action('plugins_loaded', array($this, 'load_plugin_textdomain'));
-		add_action('admin_init', array($this, 'google_adsense_ultimate_setup'));
 		add_action('admin_menu', array($this, 'admin_menu'));
 	}
 
@@ -44,8 +43,33 @@ class GoogleAdsenseUltimate {
 		load_plugin_textdomain( 'google-adsense-ultimate', false, dirname( dirname( plugin_basename( __FILE__ ) ) ) . '/languages/' );
 	}
 
-	// Plugin Setup
-	public function google_adsense_ultimate_setup() {
+	// Create a Menu
+	public function admin_menu() {
+        if (is_admin()) {
+            add_menu_page( __( 'Google Adsense Ultimate', 'google-adsense-ultimate' ),  __( 'Google Adsense Ultimate', 'google-adsense-ultimate' ), 'manage_options', 'google-adsense-ultimate-settings', array( $this, 'settings_page' ), plugin_dir_url( __FILE__ ) . 'assets/images/adsense-logo.png', 10 );
+        }
+    }
+
+    /**
+     * Settings page display callback.
+     */
+    function settings_page() { ?>
+	    <div class="wrap">               
+        	<h1><?php echo esc_html__( 'Google AdSense Ultimate', 'google-adsense-ultimate' ) ?></h1>
+
+	        <form method="POST" action="options.php">
+				<?php settings_fields( 'my-page' );
+				do_settings_sections( 'my-page' );
+				submit_button();
+				?>
+			</form>
+
+        </div>
+    <?php }
+
+
+	// Plugin input field
+	public function google_adsense_ultimate_field() {
 
 		add_settings_section( 'google_adsense_ultimate_section', __('General Settings', 'google-adsense-ultimate'), array($this, 'google_adsense_ultimate_section_callback'), 'google-adsense-ultimate-settings' );
 
@@ -81,32 +105,6 @@ class GoogleAdsenseUltimate {
 	 	echo '<input name="eg_setting_name" id="eg_setting_name" type="checkbox" value="1" class="code" ' . checked( 1, get_option( 'eg_setting_name' ), false ) . ' /> Explanation text';
 	 }
 	 
-
-	// Create a Menu
-	public function admin_menu() {
-        if (is_admin()) {
-        	// add_menu_page( $page_title, $menu_title, $capability, $menu_slug, $function = '', $icon_url = '', $position = null )
-            add_menu_page( __( 'Google Adsense Ultimate', 'google-adsense-ultimate' ), 'manage_options', 'google-adsense-ultimate-settings', array( $this, 'settings_page' ), plugin_dir_url( __FILE__ ) . 'assets/images/adsense-logo.png', 10 );
-        }
-    }
-
-    /**
-     * Settings page display callback.
-     */
-    public function settings_page() { ?>
-	    <div class="wrap">               
-        	<h1><?php echo esc_html__( 'Google AdSense Ultimate', 'google-adsense-ultimate' ) ?></h1>
-
-	        <form action='options.php' method='post'>
-		        <?php
-		        settings_fields('google_adsense_ultimate_section');
-		        do_settings_sections('google_adsense_ultimate_section');
-		        submit_button();
-		        ?>
-	        </form>
-        </div>
-    <?php }
-
 }
 
 new GoogleAdsenseUltimate;
