@@ -36,7 +36,8 @@ class GoogleAdsenseUltimate {
 	function __construct() {
 		add_action('plugins_loaded', array($this, 'load_plugin_textdomain'));
 		add_action('admin_menu', array($this, 'admin_menu'));
-		add_action('admin_init', array($this, 'google_adsense_ultimate_field'));
+		add_action('admin_init', array($this, 'google_adsense_ultimate_init'));
+		add_action('wp_head', array($this, 'add_adsense_code_to_header'));
 	}
 
 	// Text Domain
@@ -47,21 +48,27 @@ class GoogleAdsenseUltimate {
 	// Create a Menu
 	public function admin_menu() {
         if (is_admin()) {
-            add_menu_page( __( 'Google Adsense Ultimate', 'google-adsense-ultimate' ),  __( 'Google Adsense Ultimate', 'google-adsense-ultimate' ), 'manage_options', 'google-adsense-ultimate-settings', array( $this, 'settings_page' ), plugin_dir_url( __FILE__ ) . 'assets/images/adsense-logo.png', 10 );
+            add_menu_page( __( 'Google Adsense Ultimate', 'google-adsense-ultimate' ),  __( 'Google Adsense Ultimate', 'google-adsense-ultimate' ), 'manage_options', 'google-adsense-ultimate', array( $this, 'settings_page_content' ), plugin_dir_url( __FILE__ ) . 'assets/images/adsense-logo.png', 10 );
         }
     }
 
     /**
      * Settings page display callback.
      */
-    function settings_page() { ?>
+    function settings_page_content() { ?>
 	    <div class="wrap">               
         	<h1><?php echo esc_html__( 'Google AdSense Ultimate', 'google-adsense-ultimate' ) ?></h1>
+
+			<div class="update-nag">
+				<?php echo esc_html__('Please visit the', 'google-adsense-ultimate' ); ?>
+				<a target="_blank" href="http://www.themebing.com/"><?php echo esc_html__('Google AdSense Ultimate', 'google-adsense-ultimate' ); ?></a>
+				<?php echo esc_html__('documentation page for full setup instructions.', 'google-adsense-ultimate' ); ?>
+			</div>
 
 	        <form action='options.php' method='post'>
 		        <?php
 		        settings_fields('google_adsense_ultimate_group');
-		        do_settings_sections('google-adsense-ultimate-settings');
+		        do_settings_sections('google_adsense_ultimate_settings');
 		        submit_button();
 		        ?>
 	        </form>
@@ -70,52 +77,47 @@ class GoogleAdsenseUltimate {
 
 
 
+	// Plugin input fields init
+	public function google_adsense_ultimate_init() {
 
-
-
-
-
-
-	// Plugin input field
-	public function google_adsense_ultimate_field() {
-
-		add_settings_section( 'google_adsense_ultimate_section', __('General Settings', 'google-adsense-ultimate'), array($this, 'google_adsense_ultimate_section_callback'), 'google-adsense-ultimate-settings' );
-
-	    register_setting( 'google_adsense_ultimate_group', 'google_adsense_ultimate_name', array(
+		register_setting( 'google_adsense_ultimate_group', 'google_adsense_ultimate_option', array(
 	        'type' => 'string',
 	        'sanitize_callback' => 'sanitize_text_field',
 	        'default' => NULL,
 	    ) );
 
-	    add_settings_field( 'google_adsense_ultimate_field', __('Publisher ID', 'google-adsense-ultimate'),  array($this, 'google_adsense_ultimate_setting_callback'), 'google-adsense-ultimate-settings', 'google_adsense_ultimate_section' );
+		add_settings_section( 'google_adsense_ultimate_section', __('General Settings', 'google-adsense-ultimate'), array($this, 'google_adsense_ultimate_section_callback'), 'google_adsense_ultimate_settings' );
+
+		add_settings_field( 'google_adsense_ultimate_field', __('Publisher ID', 'google-adsense-ultimate'),  array($this, 'google_adsense_ultimate_setting_callback'), 'google_adsense_ultimate_settings', 'google_adsense_ultimate_section' );
 	}
 
 	// ------------------------------------------------------------------
-	// Google adsense ultimate callback function
+	// callback function for google_adsense_ultimate_group
 	// ------------------------------------------------------------------
-	//
-	// This function is needed if we added a new section. This function 
-	// will be run at the start of our section
-	//
-	 
-	 function google_adsense_ultimate_section_callback() {
-	 	echo '<p>Intro text for our settings section</p>';
-	 }
+	
+	function google_adsense_ultimate_section_callback() {
+	 	echo '<p>Please enter your Publisher ID </p>';
+	}
 
 	// ------------------------------------------------------------------
-	// Callback function for our example setting
+	// Callback function for google_adsense_ultimate_field
 	// ------------------------------------------------------------------
-	//
-	// creates a checkbox true/false option. Other types are surely possible
-	//
-	 
-	 function google_adsense_ultimate_setting_callback() {
-	 	echo '<input name="eg_setting_name" id="eg_setting_name" type="checkbox" value="1" class="code" ' . checked( 1, get_option( 'eg_setting_name' ), false ) . ' /> Explanation text';
-	 }
-	 
+	function google_adsense_ultimate_setting_callback() { ?>
+
+            <input type='text' class="regular-text" name="google_adsense_ultimate_option" value="<?php echo get_option('google_adsense_ultimate_option') ?>">
+
+            <p class="description">
+            	<?php printf(__('Enter your Google AdSense Publisher ID (e.g %s).', 'easy-google-adsense'), 'pub-1234567890111213');?>
+            </p>
+
+        <?php
+	}
 
 
-    
+
+	public function add_adsense_code_to_header(){
+
+	}
 
 }
 
