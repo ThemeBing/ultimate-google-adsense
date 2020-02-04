@@ -34,6 +34,9 @@ class GoogleAdsenseUltimate {
 
 	// Initialized
 	function __construct() {
+		if (is_admin()) {
+            add_filter('plugin_action_links', array($this, 'plugin_action_links'), 10, 2);
+        }
 		add_action('plugins_loaded', array($this, 'load_plugin_textdomain'));
 		add_action('admin_menu', array($this, 'admin_menu'));
 		add_action('admin_init', array($this, 'google_adsense_ultimate_init'));
@@ -44,6 +47,14 @@ class GoogleAdsenseUltimate {
 	public function load_plugin_textdomain() {
 		load_plugin_textdomain( 'google-adsense-ultimate', false, dirname( dirname( plugin_basename( __FILE__ ) ) ) . '/languages/' );
 	}
+
+	// Plugin Settings URL
+	public function plugin_action_links($links, $file) {
+        if ($file == plugin_basename(dirname(__FILE__) . '/google-adsense-ultimate.php')) {
+            $links[] = '<a href="options-general.php?page=google-adsense-ultimate">'.__('Settings', 'google-adsense-ultimate').'</a>';
+        }
+        return $links;
+    }
 
 	// Create a Menu
 	public function admin_menu() {
@@ -104,18 +115,25 @@ class GoogleAdsenseUltimate {
 	// ------------------------------------------------------------------
 	function google_adsense_ultimate_setting_callback() { ?>
 
-            <input type='text' class="regular-text" name="google_adsense_ultimate_option" value="<?php echo get_option('google_adsense_ultimate_option') ?>">
+        <input type='text' class="regular-text" name="google_adsense_ultimate_option" value="<?php echo get_option('google_adsense_ultimate_option') ?>">
 
-            <p class="description">
-            	<?php printf(__('Enter your Google AdSense Publisher ID (e.g %s).', 'easy-google-adsense'), 'pub-1234567890111213');?>
-            </p>
+        <p class="description">
+        	<?php printf(__('Enter your Google AdSense Publisher ID (e.g %s).', 'google-adsense-ultimate'), 'pub-1234567890111213');?>
+        </p>
 
-        <?php
+    <?php
 	}
 
 
 
 	public function add_adsense_code_to_header(){
+
+		if(!empty(get_option('google_adsense_ultimate_option'))){?>
+
+			<script data-ad-client="ca-<?php echo get_option('google_adsense_ultimate_option') ?>" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+
+		<?php
+		}
 
 	}
 
