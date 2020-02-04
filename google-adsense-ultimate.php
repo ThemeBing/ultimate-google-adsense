@@ -46,58 +46,67 @@ class GoogleAdsenseUltimate {
 
 	// Plugin Setup
 	public function google_adsense_ultimate_setup() {
-		$args = array( 
-		    'sanitize_callback' => array( $this, 'sanitize' ) // using a custom function to sanitize since the API doesn't allow array just yet
-		);
-		register_setting( 'google-adsense-ultimate-settings', 'easy_google_adsense_settings', $args );
-		//register_setting( 'easygoogleadsensepage', 'easy_google_adsense_settings' );
 
-		add_settings_section(
-		        'easy_google_adsense_section', 
-		        __('General Settings', 'easy-google-adsense'), 
-		        array($this, 'easy_google_adsense_settings_section_callback'), 
-		        'google-adsense-ultimate-settings'
-		);
+		add_settings_section( 'google_adsense_ultimate_section', __('General Settings', 'google-adsense-ultimate'), array($this, 'google_adsense_ultimate_section_callback'), 'google-adsense-ultimate-settings' );
 
-		add_settings_field( 
-		        'publisher_id', 
-		        __('Publisher ID', 'easy-google-adsense'), 
-		        array($this, 'publisher_id_render'), 
-		        'google-adsense-ultimate-settings', 
-		        'easy_google_adsense_section' 
-		);
+	    register_setting( 'google_adsense_ultimate_group', 'google_adsense_ultimate_name', array(
+	        'type' => 'string',
+	        'sanitize_callback' => 'sanitize_text_field',
+	        'default' => NULL,
+	    ) );
+
+	    add_settings_field( 'google_adsense_ultimate_field', __('Publisher ID', 'google-adsense-ultimate'),  array($this, 'google_adsense_ultimate_setting_callback'), 'google-adsense-ultimate-settings', 'google_adsense_ultimate_section' );
 	}
+
+	// ------------------------------------------------------------------
+	// Google adsense ultimate callback function
+	// ------------------------------------------------------------------
+	//
+	// This function is needed if we added a new section. This function 
+	// will be run at the start of our section
+	//
+	 
+	 function google_adsense_ultimate_section_callback() {
+	 	echo '<p>Intro text for our settings section</p>';
+	 }
+
+	// ------------------------------------------------------------------
+	// Callback function for our example setting
+	// ------------------------------------------------------------------
+	//
+	// creates a checkbox true/false option. Other types are surely possible
+	//
+	 
+	 function google_adsense_ultimate_setting_callback() {
+	 	echo '<input name="eg_setting_name" id="eg_setting_name" type="checkbox" value="1" class="code" ' . checked( 1, get_option( 'eg_setting_name' ), false ) . ' /> Explanation text';
+	 }
+	 
 
 	// Create a Menu
 	public function admin_menu() {
         if (is_admin()) {
         	// add_menu_page( $page_title, $menu_title, $capability, $menu_slug, $function = '', $icon_url = '', $position = null )
-            add_menu_page(
-	            __( 'Google Adsense Ultimate', 'google-adsense-ultimate' ),
-	            __( 'Google Adsense', 'google-adsense-ultimate' ),
-	            'manage_options',
-	            'google-adsense-ultimate-settings',
-	            array( $this, 'settings_page' ),
-	            plugin_dir_url( __FILE__ ) . 'assets/images/adsense-logo.png',
-	            10
-	        );
+            add_menu_page( __( 'Google Adsense Ultimate', 'google-adsense-ultimate' ), 'manage_options', 'google-adsense-ultimate-settings', array( $this, 'settings_page' ), plugin_dir_url( __FILE__ ) . 'assets/images/adsense-logo.png', 10 );
         }
     }
 
     /**
      * Settings page display callback.
      */
-    public function settings_page() {
-        echo __( 'This is the page content', 'google-adsense-ultimate' );
-    }
+    public function settings_page() { ?>
+	    <div class="wrap">               
+        	<h1><?php echo esc_html__( 'Google AdSense Ultimate', 'google-adsense-ultimate' ) ?></h1>
+
+	        <form action='options.php' method='post'>
+		        <?php
+		        settings_fields('google_adsense_ultimate_section');
+		        do_settings_sections('google_adsense_ultimate_section');
+		        submit_button();
+		        ?>
+	        </form>
+        </div>
+    <?php }
 
 }
 
 new GoogleAdsenseUltimate;
-
-// add_action('admin_menu', 'my_menu_pages');
-// function my_menu_pages(){
-//     add_menu_page('My Page Title', 'My Menu Title', 'manage_options', 'my-menu', 'my_menu_output' );
-//     add_submenu_page('my-menu', 'Submenu Page Title', 'Whatever You Want', 'manage_options', 'my-menu' );
-//     add_submenu_page('my-menu', 'Submenu Page Title2', 'Whatever You Want2', 'manage_options', 'my-menu2' );
-// }
