@@ -36,6 +36,7 @@ class GoogleAdsenseUltimate {
 	function __construct() {
 		add_action('plugins_loaded', array($this, 'load_plugin_textdomain'));
 		add_action('admin_menu', array($this, 'admin_menu'));
+		add_action('admin_init', array($this, 'google_adsense_ultimate_field'));
 	}
 
 	// Text Domain
@@ -57,15 +58,22 @@ class GoogleAdsenseUltimate {
 	    <div class="wrap">               
         	<h1><?php echo esc_html__( 'Google AdSense Ultimate', 'google-adsense-ultimate' ) ?></h1>
 
-	        <form method="POST" action="options.php">
-				<?php settings_fields( 'my-page' );
-				do_settings_sections( 'my-page' );
-				submit_button();
-				?>
-			</form>
-
+	        <form action='options.php' method='post'>
+		        <?php
+		        settings_fields('google_adsense_ultimate_group');
+		        do_settings_sections('google-adsense-ultimate-settings');
+		        submit_button();
+		        ?>
+	        </form>
         </div>
     <?php }
+
+
+
+
+
+
+
 
 
 	// Plugin input field
@@ -105,6 +113,10 @@ class GoogleAdsenseUltimate {
 	 	echo '<input name="eg_setting_name" id="eg_setting_name" type="checkbox" value="1" class="code" ' . checked( 1, get_option( 'eg_setting_name' ), false ) . ' /> Explanation text';
 	 }
 	 
+
+
+    
+
 }
 
 new GoogleAdsenseUltimate;
