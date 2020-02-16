@@ -10,10 +10,10 @@
  *
  * @link              https://ThemeBing.com
  * @since             1.0.0
- * @package           Google Adsense Ultimate
+ * @package           Adsense Ultimate
  *
  * @wordpress-plugin
- * Plugin Name:       Google Adsense Ultimate
+ * Plugin Name:       Adsense Ultimate
  * Plugin URI:        https://ThemeBing.com/google-adsense-ultimate
  * Description:       This is a short description of what the plugin does. It's displayed in the WordPress admin area.
  * Version:           1.0.0
@@ -72,7 +72,7 @@ class GoogleAdsenseUltimate {
 
 			<div class="update-nag">
 				<?php echo esc_html__('Please visit the', 'google-adsense-ultimate' ); ?>
-				<a target="_blank" href="http://www.themebing.com/"><?php echo esc_html__('Google AdSense Ultimate', 'google-adsense-ultimate' ); ?></a>
+				<a target="_blank" href="https://themebing.com/how-to-add-google-adsense-to-wordpress-site/"><?php echo esc_html__('Google AdSense Ultimate', 'google-adsense-ultimate' ); ?></a>
 				<?php echo esc_html__('documentation page for full setup instructions.', 'google-adsense-ultimate' ); ?>
 			</div>
 
@@ -119,6 +119,7 @@ class GoogleAdsenseUltimate {
 
         <p class="description">
         	<?php printf(__('Enter your Google AdSense Publisher ID (e.g %s).', 'google-adsense-ultimate'), 'pub-1234567890111213');?>
+        	<a href="https://themebing.com/how-to-add-google-adsense-to-wordpress-site/"><?php echo esc_html__( 'See how to get your publisher ID', 'google-adsense-ultimate' ) ?></a>
         </p>
 
     <?php
