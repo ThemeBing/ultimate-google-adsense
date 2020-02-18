@@ -68,7 +68,7 @@ class GoogleAdsenseUltimate {
      */
     function settings_page_content() { ?>
 	    <div class="wrap">               
-        	<h1><?php echo esc_html__( 'Google Ultimate Google Adsense', 'ultimate-google-adsense' ) ?></h1>
+        	<h1><?php echo esc_html__( 'Ultimate Google Adsense', 'ultimate-google-adsense' ) ?></h1>
 
 			<div class="update-nag">
 				<?php echo esc_html__('Please visit the', 'ultimate-google-adsense' ); ?>
