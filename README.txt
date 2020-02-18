@@ -1,4 +1,4 @@
-=== Google Adsense Ultimate ===
+=== Ultimate Google Adsense ===
 Contributors: themebing
 Donate link: https://themebing.com/donate
 Tags: Google Adsense, Adsense
