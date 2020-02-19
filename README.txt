@@ -15,6 +15,8 @@ This is Google Adsense Ultimate plugin which is allows you to initialized in wor
 
 This is Google Adsense Ultimate plugin for initializing in wordpress site. you don't need to add script directly/manually to the main theme. some time it is possible to lost adsense from your site when theme is update or changed. by using this plugin. you will never lose your adsense anymore. no more hassle !  just install the plugin and enjoy!
 
+see documentation here <a href="https://themebing.com/how-to-add-google-adsense-to-wordpress-site/"></a>
+
 == Installation ==
 
 1. Unpack the entire contents of this plugin zip file into your wp-content/plugins/ folder locally
