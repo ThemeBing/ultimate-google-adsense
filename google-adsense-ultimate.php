@@ -13,7 +13,7 @@
  * @package           Ultimate Google Adsense
  *
  * @wordpress-plugin
- * Plugin Name:       Ultimate Google Adsense 
+ * Plugin Name:       Ultimate Google Adsense for WordPress
  * Plugin URI:        https://ThemeBing.com/ultimate-google-adsense
  * Description:       This is a short description of what the plugin does. It's displayed in the WordPress admin area.
  * Version:           1.0.0
