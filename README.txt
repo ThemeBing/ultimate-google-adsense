@@ -1,7 +1,7 @@
 === Ultimate Google Adsense ===
 Contributors: themebing
 Donate link: https://themebing.com/donate
-Tags: Google Adsense, Adsense
+Tags: Google Adsense, Adsense, Google, Google Ads,Adsense Widgets,Adsense Widget
 Requires at least: 4.6
 Tested up to: 5.2.4
 Stable tag: 4.3
