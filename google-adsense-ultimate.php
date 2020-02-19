@@ -72,7 +72,7 @@ class GoogleAdsenseUltimate {
 
 			<div class="update-nag">
 				<?php echo esc_html__('Please visit the', 'ultimate-google-adsense' ); ?>
-				<a target="_blank" href="https://themebing.com/how-to-add-google-adsense-to-wordpress-site/"><?php echo esc_html__('Google Ultimate Google Adsense', 'ultimate-google-adsense' ); ?></a>
+				<a target="_blank" href="https://themebing.com/how-to-add-google-adsense-to-wordpress-site/"><?php echo esc_html__('Ultimate Google Adsense', 'ultimate-google-adsense' ); ?></a>
 				<?php echo esc_html__('documentation page for full setup instructions.', 'ultimate-google-adsense' ); ?>
 			</div>
 
