@@ -59,7 +59,7 @@ class GoogleAdsenseUltimate {
 	// Create a Menu
 	public function admin_menu() {
         if (is_admin()) {
-            add_menu_page( __( 'Google Adsense', 'ultimate-google-adsense' ),  __( 'Google Ultimate Google Adsense', 'ultimate-google-adsense' ), 'manage_options', 'ultimate-google-adsense', array( $this, 'settings_page_content' ), plugin_dir_url( __FILE__ ) . 'assets/images/adsense-logo.png', 10 );
+            add_menu_page( __( 'Ultimate Google Adsense', 'ultimate-google-adsense' ),  __( 'Google Adsense', 'ultimate-google-adsense' ), 'manage_options', 'ultimate-google-adsense', array( $this, 'settings_page_content' ), plugin_dir_url( __FILE__ ) . 'assets/images/adsense-logo.png', 10 );
         }
     }
 
