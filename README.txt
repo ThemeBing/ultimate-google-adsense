@@ -17,7 +17,7 @@ This is Google Adsense Ultimate plugin for initializing in wordpress site. you d
 
 See documentation <a href="https://themebing.com/how-to-add-google-adsense-to-wordpress-site/">here </a>
 
-<iframe width="100%" height="315" src="https://www.youtube.com/embed/g5T-HYGbnuw" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+<iframe width="1280" height="315" src="https://www.youtube.com/embed/g5T-HYGbnuw" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
 == Installation ==
 
