@@ -41,7 +41,10 @@ class GoogleAdsenseUltimate {
 		add_action('admin_menu', array($this, 'admin_menu'));
 		add_action('admin_init', array($this, 'ultimate_google_adsense_init'));
 		add_action('wp_head', array($this, 'add_adsense_code_to_header'));
-		add_action('wp_footer', array($this, 'add_adsense_code_to_footer'));
+
+		// AMP
+		add_action('amp_post_template_head', array($this, 'adsense_amp_head'));
+		add_action('amp_post_template_footer', array($this, 'adsense_amp_footer'));
 
 	}
 
@@ -132,7 +135,6 @@ class GoogleAdsenseUltimate {
 		if(!empty(get_option('ultimate_google_adsense_option'))){?>
 
 			<script data-ad-client="ca-<?php echo get_option('ultimate_google_adsense_option') ?>" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-			<script async custom-element="amp-auto-ads" src="https://cdn.ampproject.org/v0/amp-auto-ads-0.1.js"></script>
 
 		<?php
 		}
@@ -140,14 +142,24 @@ class GoogleAdsenseUltimate {
 	}
 
 
-	public function add_adsense_code_to_footer(){ ?>
+	// AMP Support
+	public function adsense_amp_head($amp_template) { ?>
 
+		<script async custom-element="amp-auto-ads" src="https://cdn.ampproject.org/v0/amp-auto-ads-0.1.js"></script>
+
+	<?php
+	}
+
+	public function adsense_amp_footer($amp_template) { ?>
+		
 		<amp-auto-ads type="adsense"
 		    data-ad-client="ca-<?php echo get_option('ultimate_google_adsense_option') ?>">
 		</amp-auto-ads>
-
-		<?php
+		
+	<?php 
 	}
+
+
 
 }
 
