@@ -41,6 +41,8 @@ class GoogleAdsenseUltimate {
 		add_action('admin_menu', array($this, 'admin_menu'));
 		add_action('admin_init', array($this, 'ultimate_google_adsense_init'));
 		add_action('wp_head', array($this, 'add_adsense_code_to_header'));
+		add_action('wp_body_open', array($this, 'add_adsense_code_to_body'));
+
 	}
 
 	// Text Domain
@@ -125,16 +127,33 @@ class GoogleAdsenseUltimate {
     <?php
 	}
 
-
-
 	public function add_adsense_code_to_header(){
 
 		if(!empty(get_option('ultimate_google_adsense_option'))){?>
 
 			<script data-ad-client="ca-<?php echo get_option('ultimate_google_adsense_option') ?>" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+			<script async custom-element="amp-ad" src="https://cdn.ampproject.org/v0/amp-ad-0.1.js"></script>
 
 		<?php
 		}
+
+	}
+
+
+	public function add_adsense_code_to_body( $content ){
+		ob_start(); ?>
+		
+		<amp-ad width="100vw" height="320"
+		     type="adsense"
+		     data-ad-client="ca-<?php echo get_option('ultimate_google_adsense_option') ?>"
+		     data-ad-slot="5844753548"
+		     data-auto-format="rspv"
+		     data-full-width="">
+		  <div overflow=""></div>
+		</amp-ad>
+
+		<?php 
+		return $content . ob_get_clean();
 
 	}
 
