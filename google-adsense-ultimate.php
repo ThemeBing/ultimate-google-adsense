@@ -41,7 +41,7 @@ class GoogleAdsenseUltimate {
 		add_action('admin_menu', array($this, 'admin_menu'));
 		add_action('admin_init', array($this, 'ultimate_google_adsense_init'));
 		add_action('wp_head', array($this, 'add_adsense_code_to_header'));
-		add_action('wp_body_open', array($this, 'add_adsense_code_to_body'));
+		add_action('wp_footer', array($this, 'add_adsense_code_to_footer'));
 
 	}
 
@@ -140,21 +140,17 @@ class GoogleAdsenseUltimate {
 	}
 
 
-	public function add_adsense_code_to_body( $content ){
-		ob_start(); ?>
-		
+	public function add_adsense_code_to_footer(){ ?>
+
 		<amp-ad width="100vw" height="320"
 		     type="adsense"
 		     data-ad-client="ca-<?php echo get_option('ultimate_google_adsense_option') ?>"
-		     data-ad-slot="5844753548"
-		     data-auto-format="rspv"
-		     data-full-width="">
-		  <div overflow=""></div>
+		     data-auto-format="rspv">
+			
+			<div overflow=""></div>
 		</amp-ad>
 
-		<?php 
-		return $content . ob_get_clean();
-
+		<?php
 	}
 
 }
