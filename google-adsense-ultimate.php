@@ -132,7 +132,7 @@ class GoogleAdsenseUltimate {
 		if(!empty(get_option('ultimate_google_adsense_option'))){?>
 
 			<script data-ad-client="ca-<?php echo get_option('ultimate_google_adsense_option') ?>" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-			<script async custom-element="amp-ad" src="https://cdn.ampproject.org/v0/amp-ad-0.1.js"></script>
+			<script async custom-element="amp-auto-ads" src="https://cdn.ampproject.org/v0/amp-auto-ads-0.1.js"></script>
 
 		<?php
 		}
@@ -142,13 +142,9 @@ class GoogleAdsenseUltimate {
 
 	public function add_adsense_code_to_footer(){ ?>
 
-		<amp-ad width="100vw" height="320"
-		     type="adsense"
-		     data-ad-client="ca-<?php echo get_option('ultimate_google_adsense_option') ?>"
-		     data-auto-format="rspv">
-			
-			<div overflow=""></div>
-		</amp-ad>
+		<amp-auto-ads type="adsense"
+		    data-ad-client="ca-<?php echo get_option('ultimate_google_adsense_option') ?>">
+		</amp-auto-ads>
 
 		<?php
 	}
