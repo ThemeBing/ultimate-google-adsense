@@ -19,6 +19,10 @@ See documentation <a href="https://themebing.com/how-to-add-google-adsense-to-wo
 
 <iframe width="1280" height="315" src="https://www.youtube.com/embed/g5T-HYGbnuw" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
+= Go Pro =
+Checkout Pro version **[Ultimate Google Adsense](https://themebing.com/shop/plugins/ultimate-google-adsense-pro/)** of this plugin that provides a lot more functionality.
+- AMP page support
+
 == Installation ==
 
 1. Unpack the entire contents of this plugin zip file into your wp-content/plugins/ folder locally

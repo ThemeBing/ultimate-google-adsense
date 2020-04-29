@@ -41,6 +41,7 @@ class GoogleAdsenseUltimate {
 		add_action('admin_menu', array($this, 'admin_menu'));
 		add_action('admin_init', array($this, 'ultimate_google_adsense_init'));
 		add_action('wp_head', array($this, 'add_adsense_code_to_header'));
+		add_filter( 'plugin_action_links_' . plugin_basename(__FILE__),  array( $this, 'ultimate_google_adsense_pro_link' ));
 
 		// AMP
 		add_action('amp_post_template_head', array($this, 'adsense_amp_head'));
@@ -159,7 +160,11 @@ class GoogleAdsenseUltimate {
 	<?php 
 	}
 
-
+	// Add pro link to plugin actions
+	public function ultimate_google_adsense_pro_link($links){
+	    $links['go_pro'] = '<a style="color:green;" title="Upgrade to Pro" href="https://themebing.com/shop/plugins/ultimate-google-adsense-pro/" target="_blank"><b>Go Pro</b></a>';
+	    return $links;
+	}
 
 }
 
