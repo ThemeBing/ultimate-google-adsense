@@ -43,10 +43,6 @@ class GoogleAdsenseUltimate {
 		add_action('wp_head', array($this, 'add_adsense_code_to_header'));
 		add_filter( 'plugin_action_links_' . plugin_basename(__FILE__),  array( $this, 'ultimate_google_adsense_pro_link' ));
 
-		// AMP
-		add_action('amp_post_template_head', array($this, 'adsense_amp_head'));
-		add_action('amp_post_template_footer', array($this, 'adsense_amp_footer'));
-
 	}
 
 	// Text Domain
@@ -140,24 +136,6 @@ class GoogleAdsenseUltimate {
 		<?php
 		}
 
-	}
-
-
-	// AMP Support
-	public function adsense_amp_head($amp_template) { ?>
-
-		<script async custom-element="amp-auto-ads" src="https://cdn.ampproject.org/v0/amp-auto-ads-0.1.js"></script>
-
-	<?php
-	}
-
-	public function adsense_amp_footer($amp_template) { ?>
-		
-		<amp-auto-ads type="adsense"
-		    data-ad-client="ca-<?php echo get_option('ultimate_google_adsense_option') ?>">
-		</amp-auto-ads>
-		
-	<?php 
 	}
 
 	// Add pro link to plugin actions
