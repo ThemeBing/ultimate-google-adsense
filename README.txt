@@ -3,7 +3,7 @@ Contributors: themebing
 Donate link: https://themebing.com/donate
 Tags: Google Adsense, Adsense, Google, Google Ads,Adsense Widgets,Adsense Widget,Google Adsense for WordPress
 Requires at least: 4.6
-Tested up to: 5.2.4
+Tested up to: 5.5
 Stable tag: 4.3
 Requires PHP: 6.0
 License: GPLv2 or later
@@ -50,3 +50,6 @@ Safe to upgrade
 
 = 1.0.0 – Feb 16, 2020 =
 * Initial release
+
+= 1.0.2 – August 02, 2020 =
+* 5.5 Compatibility
