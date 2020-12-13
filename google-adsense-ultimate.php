@@ -9,7 +9,7 @@
  * that starts the plugin.
  *
  * @link              https://ThemeBing.com
- * @since             1.0.2
+ * @since             1.0.3
  * @package           Ultimate Google Adsense
  *
  * @wordpress-plugin

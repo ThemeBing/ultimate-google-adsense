@@ -1,9 +1,9 @@
 === Ultimate Google Adsense ===
 Contributors: themebing
-Donate link: https://themebing.com/donate
+Donate link: https://themebing.com
 Tags: Google Adsense, Adsense, Google, Google Ads,Adsense Widgets,Adsense Widget,Google Adsense for WordPress
 Requires at least: 4.6
-Tested up to: 5.5
+Tested up to: 5.6
 Stable tag: 4.3
 Requires PHP: 6.0
 License: GPLv2 or later
