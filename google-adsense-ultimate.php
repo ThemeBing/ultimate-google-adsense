@@ -1,22 +1,10 @@
 <?php
 
 /**
- * The plugin bootstrap file
- *
- * This file is read by WordPress to generate the plugin information in the plugin
- * admin area. This file also includes all of the dependencies used by the plugin,
- * registers the activation and deactivation functions, and defines a function
- * that starts the plugin.
- *
- * @link              https://ThemeBing.com
- * @since             1.0.0
- * @package           Ultimate Google Adsense
- *
- * @wordpress-plugin
  * Plugin Name:       Ultimate Google Adsense for WordPress
  * Plugin URI:        https://ThemeBing.com/ultimate-google-adsense
  * Description:       This is a short description of what the plugin does. It's displayed in the WordPress admin area.
- * Version:           1.0.2
+ * Version:           1.0.3
  * Author:            ThemeBing
  * Author URI:        https://ThemeBing.com
  * License:           GPL-2.0+
